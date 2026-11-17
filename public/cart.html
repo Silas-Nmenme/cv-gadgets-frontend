@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-NG">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Cart | CV GADGETS</title><meta name="description" content="Review your CV GADGETS selections, choose delivery and send your order request.">
+  <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/variables.css"><link rel="stylesheet" href="./css/base.css"><link rel="stylesheet" href="./css/layout.css"><link rel="stylesheet" href="./css/components.css"><link rel="stylesheet" href="./css/cart.css">
+  <script type="module" src="./js/cart-page.js"></script>
+<link rel="stylesheet" href="./css/brand.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="./"><img src="./assets/images/logo.svg" width="48" height="48" alt=""><span>CV GADGETS</span></a><nav class="cart-nav" aria-label="Main navigation"><a href="./#products">Shop the catalogue</a><a href="./wishlist.html">Wishlist</a><a id="open-auth" href="./signin.html">Sign in</a><a href="./cart.html" aria-current="page">Cart <span id="cart-count">0</span></a></nav></div></header>
+<main id="main" class="section cart-page">
+  <a href="./#products" class="back-link">← Continue shopping</a>
+  <div class="cart-heading"><div><p class="eyebrow">YOUR CV GADGETS CART</p><h1>Your shopping cart<span>.</span></h1></div><p>Thoughtfully chosen.<br>Made to be yours.</p></div>
+  <section id="cart-promotions" class="promo-announcements" aria-label="Current promotions" hidden></section>
+  <p id="cart-status" role="status">Loading your saved cart…</p><button id="retry-cart" class="button button-outline" hidden>Try again</button>
+  <div id="cart-content" class="cart-layout" hidden>
+    <section aria-labelledby="items-title"><div class="cart-list-heading"><h2 id="items-title">Your items</h2><button id="clear-cart" class="text-button">Clear cart</button></div><p class="cart-hint">Up to 20 units of each product configuration.</p><div id="cart-items"></div><p class="craft-note">Check the selected storage/configuration and colour for each item before placing your order.</p></section>
+    <aside class="order-summary" aria-labelledby="summary-title"><p class="eyebrow">The details</p><h2 id="summary-title">Order summary</h2><div class="summary-line"><span>Items subtotal</span><strong id="subtotal"></strong></div><form id="promo-form" class="promo-entry"><label for="promo-code">Promo code</label><div class="promo-entry-controls"><input id="promo-code" name="promoCode" maxlength="40" autocomplete="off" required><button id="apply-promo" class="button button-outline" type="submit">Apply</button></div><p id="promo-status" class="form-status" role="status" aria-live="polite"></p></form><div id="discount-line" class="summary-line" hidden><span>Promo discount</span><strong id="discount"></strong></div><label for="delivery">Delivery</label><select id="delivery"><option value="pickup">Pick-up — confirm with store</option><option value="lagos">Within Lagos</option><option value="outside">Outside Lagos / Nationwide</option></select><p id="delivery-time" class="cart-hint"></p><div class="summary-line"><span>Delivery estimate</span><span id="delivery-fee"></span></div><div class="summary-line total"><span>Estimated total</span><strong id="total"></strong></div><p class="cart-hint">Delivery charges are shown when configured; otherwise, confirm the final delivery fee with our team before payment.</p><button id="checkout" class="button">Continue to order →</button><p class="summary-footnote">Choose an available payment method during checkout. Online payment appears only when configured.</p></aside>
+  </div>
+  <section id="empty-cart" class="empty-cart" hidden><span class="empty-mark" aria-hidden="true">AS</span><p class="eyebrow">READY WHEN YOU ARE</p><h2>Your next device is waiting.</h2><p>Your cart is empty. Browse phones, laptops, tablets and charging accessories to find what you need.</p><a class="button" href="./#products">Explore the catalogue →</a></section>
+  <noscript><p>Please enable JavaScript to view and update your saved cart.</p></noscript>
+</main>
+<footer class="site-footer"><p>© <span id="year"></span> CV GADGETS. Technology for everyday life.</p><div><a href="./privacy.html">Privacy Policy</a><a href="./terms.html">Terms</a><a href="./help.html">Shipping &amp; returns</a><a href="./#contact">Contact us</a></div></footer>
+<div id="toast-region" class="toast-region" role="status" aria-live="polite"></div><div id="modal-root"></div>
+</body></html>

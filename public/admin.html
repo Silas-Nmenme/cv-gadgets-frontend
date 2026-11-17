@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en-NG">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CV GADGETS administrator dashboard.">
+  <title>Admin dashboard | CV GADGETS</title>
+  <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/pages.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+  <script type="module" src="./js/admin-page.js"></script>
+<link rel="stylesheet" href="./css/brand.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./"><img src="./assets/images/logo.svg" width="44" height="44" alt=""><span>CV GADGETS</span></a>
+      <nav class="page-nav" aria-label="Administrator navigation">
+        <a href="./#products">Shop</a>
+        <a href="./account.html" data-auth-link>Sign in</a>
+        <a href="#orders">Orders</a>
+        <a href="#products">Products</a>
+        <a href="#promotions">Promotions</a>
+        <button id="admin-signout" class="button button-small button-outline" type="button">Sign out</button>
+      </nav>
+    </div>
+  </header>
+  <main class="section support-page" id="main">
+    <div class="page-intro">
+      <p class="eyebrow">Store management</p>
+      <h1>Admin dashboard.</h1>
+      <p id="admin-status" role="status" aria-live="polite">Checking administrator access…</p>
+      <a id="admin-signin" class="button" href="./signin.html" hidden>Sign in</a>
+    </div>
+    <div id="admin-dashboard" hidden>
+      <section aria-label="Store summary">
+        <div id="summary-cards" class="admin-summary"></div>
+        <p id="summary-status" class="form-status" role="status"></p>
+      </section>
+
+      <section id="orders" class="help-block">
+        <div class="admin-section-heading">
+          <div><p class="eyebrow">Fulfilment</p><h2>Recent orders</h2></div>
+          <button id="refresh-orders" class="button button-outline" type="button">Refresh orders</button>
+        </div>
+        <p id="orders-status" role="status"></p>
+        <p class="field-help">Select an order to view its full details and item photos. Revenue includes confirmed payments only.</p>
+        <div id="admin-orders" class="admin-list"></div>
+        <div class="admin-pagination">
+          <button id="orders-previous" class="button button-outline" type="button">Previous</button>
+          <span id="orders-page"></span>
+          <button id="orders-next" class="button button-outline" type="button">Next</button>
+        </div>
+      </section>
+
+      <section id="products" class="help-block">
+        <div class="admin-section-heading">
+          <div><p class="eyebrow">Catalogue</p><h2>Products & inventory</h2></div>
+          <button id="new-product" class="button" type="button">Add product</button>
+        </div>
+        <p id="products-status" role="status"></p>
+        <form id="product-form" class="admin-product-form" hidden>
+          <h3 id="product-form-title">Add a product</h3>
+          <input type="hidden" name="id">
+          <div class="admin-form-grid">
+            <label>Product code<input name="productCode" minlength="2" maxlength="40" required></label>
+            <label>Product name<input name="name" minlength="2" maxlength="150" required></label>
+            <label>Category<input name="category" list="gadget-categories" maxlength="100" placeholder="phones, laptops, tablets…" required><datalist id="gadget-categories"><option value="phones">Phones</option><option value="laptops">Laptops</option><option value="tablets">Tablets</option><option value="ipads">iPads</option><option value="macbooks">MacBooks</option><option value="chargers">Chargers & accessories</option></datalist></label>
+            <label>Brand<input name="brand" list="gadget-brands" maxlength="80" placeholder="Apple, Samsung, HP…"><datalist id="gadget-brands"><option>Apple</option><option>Samsung</option><option>HP</option><option>Dell</option><option>Lenovo</option></datalist></label>
+            <label>Model<input name="model" maxlength="120" placeholder="e.g. iPhone 15 Pro Max"></label>
+            <label>Subcategory / series<input name="subcategory" maxlength="100" placeholder="e.g. Kids tablet, Galaxy Tab S, EliteBook"></label>
+            <label>Condition<select name="condition"><option value="">Not specified</option><option>Brand New</option><option>UK Used</option><option>US Used</option><option>Open Box</option><option>Refurbished</option></select></label>
+            <label>Price (NGN)<input name="price" type="number" min="0" step="1" required></label>
+            <label>Discounted price (NGN)<input name="discountPrice" type="number" min="0" step="1" value="0"></label>
+            <label>Warranty<input name="warranty" maxlength="160" placeholder="e.g. 6 months / Store warranty"></label>
+            <label>Stock quantity<input name="stock" type="number" min="0" step="1" required></label>
+            <label>Low-stock alert at<input name="lowStockThreshold" type="number" min="0" step="1" value="5" required></label>
+          </div>
+          <label>Description<textarea name="description" maxlength="3000" required></textarea></label>
+          <label>Upload product images <span class="field-help">JPG, PNG, WebP or AVIF · up to 10 files per upload · 8 MB each.</span><input name="imageFiles" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple></label>
+          <div id="product-image-previews" class="product-image-previews" aria-live="polite"></div>
+          <label>Image URLs <span class="field-help">Uploaded Cloudinary URLs appear here. You can also enter one HTTP or HTTPS image URL per line.</span><textarea name="images" rows="3"></textarea></label>
+          <div class="admin-form-grid">
+            <label>Storage / configuration options <span class="field-help">One value per line, e.g. 128GB, 256GB, 512GB, 16GB RAM / 1TB SSD.</span><textarea name="sizes" rows="3"></textarea></label>
+            <label>Colours / variants <span class="field-help">One value per line. Use Standard if no choice is required.</span><textarea name="colours" rows="3"></textarea></label>
+          </div>
+          <label>Technical specifications <span class="field-help">One specification per line in “Label: Value” format. Example: Processor: Apple M3</span><textarea name="specifications" rows="5" placeholder="Processor: Apple M3&#10;RAM: 16GB&#10;Storage: 512GB SSD&#10;Screen: 13-inch"></textarea></label>
+          <div class="admin-checkboxes">
+            <label><input name="featured" type="checkbox"> Featured product</label>
+            <label><input name="active" type="checkbox" checked> Active / visible in shop</label>
+          </div>
+          <p id="product-form-status" class="form-status" role="status"></p>
+          <div class="modal-actions">
+            <button class="button" type="submit">Save product</button>
+            <button id="cancel-product" class="button button-outline" type="button">Cancel</button>
+          </div>
+        </form>
+        <div id="admin-products" class="admin-list"></div>
+      </section>
+
+      <section id="promotions" class="help-block">
+        <div class="admin-section-heading">
+          <div><p class="eyebrow">Marketing</p><h2>Promo campaigns</h2></div>
+          <button id="new-promo" class="button" type="button">Create campaign</button>
+        </div>
+        <p id="promos-status" role="status"></p>
+        <form id="promo-form" class="admin-product-form" hidden>
+          <h3 id="promo-form-title">Create a campaign</h3>
+          <input type="hidden" name="id">
+          <div class="admin-form-grid">
+            <label>Campaign name<input name="name" minlength="2" maxlength="120" required></label>
+            <label>Unique promo code<input name="code" minlength="2" maxlength="40" pattern="[A-Za-z0-9_-]+" required></label>
+            <label>Discount type<select name="type"><option value="percent">Percentage</option><option value="fixed">Fixed amount (NGN)</option></select></label>
+            <label>Discount value<input name="value" type="number" min="1" step="1" required></label>
+            <label>Minimum order subtotal (NGN)<input name="minSubtotal" type="number" min="0" step="1" value="0" required></label>
+            <label>Maximum redemptions <span class="field-help">Leave blank for unlimited.</span><input name="maxUses" type="number" min="1" step="1"></label>
+            <label>Expiry date and time <span class="field-help">Leave blank for no expiry.</span><input name="expiresAt" type="datetime-local"></label>
+          </div>
+          <label>Eligible product codes <span class="field-help">One code per line. Leave empty to apply to all products.</span><textarea name="applicableProductCodes" rows="3"></textarea></label>
+          <label>Announcement text <span class="field-help">Shown on the homepage, account dashboard and cart.</span><textarea name="announcementText" maxlength="500" rows="3"></textarea></label>
+          <div class="admin-checkboxes">
+            <label><input name="publishAnnouncement" type="checkbox"> Publish as a customer announcement</label>
+            <label><input name="active" type="checkbox" checked> Active / redeemable</label>
+          </div>
+          <p id="promo-form-status" class="form-status" role="status"></p>
+          <div class="modal-actions">
+            <button class="button" type="submit">Save campaign</button>
+            <button id="cancel-promo" class="button button-outline" type="button">Cancel</button>
+          </div>
+        </form>
+        <div id="admin-promos" class="admin-list"></div>
+      </section>
+
+      <section id="subscribers" class="help-block">
+        <div class="admin-section-heading">
+          <div><p class="eyebrow">Community</p><h2>Newsletter subscribers</h2></div>
+          <button id="refresh-subscribers" class="button button-outline" type="button">Refresh subscribers</button>
+        </div>
+        <p id="subscribers-status" role="status"></p>
+        <p id="subscriber-count" class="field-help" aria-live="polite">Checking active subscriber count…</p>
+        <form id="newsletter-form" class="admin-product-form newsletter-compose-form">
+          <h3>Compose a newsletter</h3>
+          <label for="newsletter-subject">Subject</label>
+          <input id="newsletter-subject" name="subject" minlength="3" maxlength="150" required>
+          <label for="newsletter-message">Message</label>
+          <textarea id="newsletter-message" name="message" rows="8" minlength="10" maxlength="12000" required></textarea>
+          <p class="field-help">Plain text; line breaks are preserved. Each active subscriber receives an individual email with an unsubscribe link.</p>
+          <p id="newsletter-send-status" class="form-status" role="status" aria-live="polite"></p>
+          <button id="send-newsletter" class="button" type="submit" disabled>Send to subscribers</button>
+        </form>
+        <h3>Recent newsletters</h3>
+        <p id="newsletter-history-status" role="status"></p>
+        <div id="admin-newsletter-history" class="admin-list"></div>
+        <div id="admin-subscribers" class="admin-subscriber-list"></div>
+      </section>
+
+      <section id="messages" class="help-block">
+        <div class="admin-section-heading">
+          <div><p class="eyebrow">Customer care</p><h2>Contact messages</h2></div>
+          <button id="refresh-messages" class="button button-outline" type="button">Refresh messages</button>
+        </div>
+        <p id="messages-status" role="status"></p>
+        <div id="admin-messages" class="admin-list"></div>
+        <div class="admin-pagination">
+          <button id="messages-previous" class="button button-outline" type="button">Previous</button>
+          <span id="messages-page"></span>
+          <button id="messages-next" class="button button-outline" type="button">Next</button>
+        </div>
+      </section>
+
+      <section class="help-block">
+        <p class="eyebrow">Customer experience</p>
+        <h2>Review moderation</h2>
+        <p>Review and approve customer submissions from your account workspace.</p>
+        <a class="button button-outline" href="./account.html#moderation">Open review moderation</a>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>CV GADGETS · Administrator workspace</p>
+    <div><a href="./account.html" data-auth-link>Sign in</a><a href="./">Storefront</a></div>
+  </footer>
+  <div id="modal-root"></div>
+</body>
+</html>
