@@ -1,11 +1,5 @@
-const isLocalDevelopment = ["localhost", "127.0.0.1", "[::1]"]
-  .includes(window.location.hostname);
-const defaultApiUrl = isLocalDevelopment
-  ? "http://localhost:3000/api"
-  : `${window.location.origin}/api`;
-const configuredApiUrl = (
-  isLocalDevelopment ? window.CV_GADGETS_API_URL || defaultApiUrl : defaultApiUrl
-)
+const defaultApiUrl = "https://cv-gadgets-backend.vercel.app/api";
+const configuredApiUrl = (window.CV_GADGETS_API_URL || defaultApiUrl)
   .replace(/\/+$/, "");
 
 export const API_BASE_URL = configuredApiUrl.endsWith("/api")
