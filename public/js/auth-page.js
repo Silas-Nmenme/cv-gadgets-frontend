@@ -25,6 +25,11 @@ function redirectToDashboard(user) {
 }
 
 function redirectAfterSignIn(user) {
+  if (user?.role === 'admin') {
+    redirectToDashboard(user);
+    return;
+  }
+
   const returnTo = new URLSearchParams(window.location.search).get('returnTo');
   if (returnTo) {
     try {
@@ -114,15 +119,26 @@ form.addEventListener('submit', async event => {
 
   try {
     if (page === 'signin') {
-      const { user } = await api('/auth/login', {
+      await api('/auth/login', {
         method: 'POST',
         body: JSON.stringify({
           email: values.email.trim(),
           password: values.password,
         }),
       });
+
+      let sessionUser;
+      try {
+        ({ user: sessionUser } = await api('/auth/me'));
+      } catch (error) {
+        if (error.status === 401) {
+          throw new Error('Sign-in succeeded, but this browser did not retain the session. Please try again.');
+        }
+        throw error;
+      }
+
       form.reset();
-      redirectAfterSignIn(user);
+      redirectAfterSignIn(sessionUser);
     } else if (page === 'signup') {
       if (!strongPassword(values.password)) {
         throw new Error('Use at least 10 characters, including an uppercase letter, a lowercase letter, and a number.');
