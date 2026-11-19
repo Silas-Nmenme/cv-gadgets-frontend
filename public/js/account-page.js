@@ -7,9 +7,20 @@ import { closeModal, openModal } from './modules/modal.js';
 const status = document.getElementById('account-status');
 const profile = document.getElementById('profile-form');
 const panel = document.getElementById('account-panel');
+const themeToggle = document.getElementById('theme-toggle');
+const themeStatus = document.getElementById('theme-status');
 const message = text => { status.textContent = text; };
 
 initAuth();
+
+themeToggle.checked = window.CVGadgetsTheme.current() === 'dark';
+themeToggle.addEventListener('change', () => {
+  const theme = themeToggle.checked ? 'dark' : 'light';
+  const saved = window.CVGadgetsTheme.set(theme);
+  themeStatus.textContent = saved
+    ? `${theme === 'dark' ? 'Dark' : 'Light'} theme enabled.`
+    : `The ${theme} theme is enabled for this page but could not be saved.`;
+});
 
 function displayDate(value) {
   const date = new Date(value);

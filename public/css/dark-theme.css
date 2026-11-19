@@ -1,0 +1,180 @@
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e9edf1;
+  --muted: #aab4be;
+  --paper: #11151a;
+  --surface: #1b2128;
+  --soft: #242c34;
+  --soft-warm: #302821;
+  --border: #39434e;
+  --teal-deep: #f0f3f6;
+  --teal-dark: #ff9a76;
+  --teal-pale: #392a24;
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] .product-card .price,
+html[data-theme="dark"] .admin-stat-card strong,
+html[data-theme="dark"] .page-intro h1 {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] a {
+  color: #ff9a76;
+}
+
+html[data-theme="dark"] .site-header {
+  background: rgba(25, 30, 36, .97);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .brand,
+html[data-theme="dark"] .nav-links a,
+html[data-theme="dark"] .header-signin,
+html[data-theme="dark"] .header-icon-link {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .header-signin,
+html[data-theme="dark"] .button-outline {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .brands-section,
+html[data-theme="dark"] .product-filters,
+html[data-theme="dark"] .newsletter-form,
+html[data-theme="dark"] .service-band,
+html[data-theme="dark"] .catalogue-admin-note,
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .category-phone,
+html[data-theme="dark"] .category-laptop,
+html[data-theme="dark"] .category-tablet,
+html[data-theme="dark"] .category-ipad,
+html[data-theme="dark"] .category-charger {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .category-card-copy small,
+html[data-theme="dark"] .section-heading > p,
+html[data-theme="dark"] .product-card p,
+html[data-theme="dark"] .service-band p:not(.eyebrow),
+html[data-theme="dark"] .contact-intro p,
+html[data-theme="dark"] .catalogue-admin-note p,
+html[data-theme="dark"] .brand-list {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .product-card,
+html[data-theme="dark"] .review-card,
+html[data-theme="dark"] .form-card,
+html[data-theme="dark"] .help-block,
+html[data-theme="dark"] .admin-stat-card,
+html[data-theme="dark"] .admin-record,
+html[data-theme="dark"] .customer-order-card,
+html[data-theme="dark"] .order-detail-item,
+html[data-theme="dark"] .product-image-preview,
+html[data-theme="dark"] .promo-entry,
+html[data-theme="dark"] .admin-product-form,
+html[data-theme="dark"] .order-summary,
+html[data-theme="dark"] .cart-summary {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .support-note {
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+html[data-theme="dark"] .support-note h2,
+html[data-theme="dark"] .support-note a:not(.button) {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .admin-record-details p,
+html[data-theme="dark"] .order-detail-item p,
+html[data-theme="dark"] .order-request-card p,
+html[data-theme="dark"] .review-card p {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] .search-field {
+  color: var(--ink);
+  background-color: #202830;
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder,
+html[data-theme="dark"] label {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .search-field input {
+  background: transparent;
+}
+
+html[data-theme="dark"] .product-card > img,
+html[data-theme="dark"] .product-main-image,
+html[data-theme="dark"] .product-thumbnail,
+html[data-theme="dark"] .order-detail-item img,
+html[data-theme="dark"] .order-image-placeholder {
+  background-color: var(--soft);
+}
+
+html[data-theme="dark"] .quantity-controls button,
+html[data-theme="dark"] .modal-close {
+  color: var(--ink);
+  background: var(--soft);
+}
+
+html[data-theme="dark"] .promotion-card {
+  color: var(--ink);
+  background: linear-gradient(135deg, #392a24, #302a21);
+}
+
+html[data-theme="dark"] .promotion-card h2,
+html[data-theme="dark"] .promotion-card .eyebrow {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .empty-state {
+  color: var(--muted);
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 24rem;
+  margin: 1rem 0 0;
+  color: var(--ink);
+}
+
+.theme-toggle input[type="checkbox"] {
+  width: 1.25rem;
+  min-height: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--teal);
+}
